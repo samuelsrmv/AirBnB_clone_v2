@@ -15,15 +15,18 @@ from models.review import Review
 
 
 class DBStorage:
+    """class DBStorage"""
     __engine = None
     __session = None
 
     def __init__(self):
+        """__init__"""
         username = os.getenv('HBNB_MYSQL_USER')
         password = os.getenv('HBNB_MYSQL_PWD')
         host = os.getenv('HBNB_MYSQL_HOST')
         database = os.getenv('HBNB_MYSQL_DB')
-        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format(username, password, host, database), pool_pre_ping=True)
+        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format(
+            username, password, host, database), pool_pre_ping=True)
         if os.getenv('HBNB_ENV') == 'test':
             Base.metadata.drop_all(self.__engine)
 
@@ -50,18 +53,21 @@ class DBStorage:
             return result
 
     def new(self, obj):
+        """new"""
         self.__session.add(obj)
 
     def save(self):
+        """save"""
         self.__session.commit()
 
     def delete(self, obj=None):
+        """delete"""
         if obj is not None:
             self.__session.delete(obj)
 
     def reload(self):
+        """reload"""
         Base.metadata.create_all(self.__engine)
         X = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(X)
         self.__session = Session()
-
