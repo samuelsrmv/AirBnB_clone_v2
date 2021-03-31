@@ -8,11 +8,7 @@ import models
 
 class Place(BaseModel, Base):
     """ A place to stay """
-<<<<<<< HEAD
     __tablename__ = "places"
-=======
-    __tablename__ = 'places'
->>>>>>> e516ba9cf425332d77a78d8ad074ae048ec40fb8
     city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
     user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
     name = Column(String(128), nullable=False)
