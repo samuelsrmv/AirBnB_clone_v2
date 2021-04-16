@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # prepare your web servers
 
-if ! [ -x "$(command -v nginx)" ]; then apt update -y; apt install nginx -y; fi 
+if ! [ -x "$(command -v nginx)" ]; then apt update; apt install nginx -y; fi 
 
 if [ ! -d /data/ ]; then
   mkdir /data/;
@@ -38,4 +38,4 @@ sudo chown -R ubuntu:ubuntu /data/
 
 sed -i '/listen 80 default_server;/a \\tlocation /hbnb_static/ {\n\t\talias /data/web_static/current/;\n\t\tautoindex off;\n\t}' /etc/nginx/sites-available/default
 
-service nginx restartd
+service nginx restart
