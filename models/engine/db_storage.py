@@ -37,24 +37,24 @@ class DBStorage:
             'State': State, 'City': City, 'Amenity': Amenity,
             'Review': Review
         }
-        self.__session = Session(self.__engine)
         result = {}
-        if cls:
-            query = self.__session.query(classes[clas]).all()
-            for obj in query:
+        if cls in classes:
+            objs = self.__session.query(classes[cls]).all()
+            for obj in objs:
                 key = '{}.{}'.format(obj.__class__.__name__, obj.id)
                 result[key] = obj
-        else:
+        elif cls is None:
             for clas in classes:
                 query = self.__session.query(classes[clas]).all()
                 for obj in query:
                     key = '{}.{}'.format(obj.__class__.__name__, obj.id)
                     result[key] = obj
-            return result
+        return result
 
     def new(self, obj):
         """new"""
-        self.__session.add(obj)
+        if obj:
+            self.__session.add(obj)
 
     def save(self):
         """save"""
