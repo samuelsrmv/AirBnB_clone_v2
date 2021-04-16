@@ -34,7 +34,4 @@ else
 fi
 sudo chown -R ubuntu:ubuntu /data/
 
-sed -i '/listen 80 default_server;/a \\tlocation /hbnb_static/ { \
-\t\talias /data/web_static/current/; \
-\t\tautoindex off; \
-\t}' /etc/nginx/sites-available/default
+sed -i '/listen 80 default_server;/a \\tlocation /hbnb_static/ {\n\t\talias /data/web_static/current/;\n\t\tautoindex off;\n\t}' /etc/nginx/sites-available/default
