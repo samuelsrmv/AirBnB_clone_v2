@@ -4,6 +4,7 @@ from fabric.api import local
 from datetime import datetime
 import os
 
+
 def do_pack():
     """script that generates a .tgz archive"""
     try:
@@ -13,7 +14,8 @@ def do_pack():
         filename = "web_static_" + dt_string + ".tgz"
         local('tar -cvzf versions/{} web_static/'.format(filename))
         path = './versions/{}'.format(filename)
-        print("web_static packed: {} ->{}Bytes".format(path, os.path.getsize(path)))
+        print("web_static packed: {} ->{}Bytes"
+              .format(path, os.path.getsize(path)))
     except:
         return None
 if __name__ == "__main__":
