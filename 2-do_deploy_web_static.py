@@ -46,6 +46,3 @@ def do_deploy(archive_path):
     else:
         print("Fallooo :c")
         return False
-
-if __name__ == "__main__":
-    do_deploy()
