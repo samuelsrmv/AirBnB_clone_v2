@@ -39,7 +39,7 @@ def do_deploy(archive_path):
 /data/web_static/releases/{}/".format(path2, path2))
         run("sudo rm -rf /data/web_static/releases/{}/web_static"
             .format(path2))
-        run("sudo rm -rf /data/web_satic/current")
+        run("sudo rm -rf /data/web_static/current")
         run("sudo ln -s /data/web_static/releases/{}/ \
 /data/web_static/current".format(path2))
         print("New version deployed!")
