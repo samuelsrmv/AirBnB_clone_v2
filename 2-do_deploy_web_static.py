@@ -32,12 +32,16 @@ def do_deploy(archive_path):
     if path.exists(archive_path):
         put(archive_path, "/tmp/")
         run("sudo mkdir -p  /data/web_static/releases/{}/".format(path2))
-        run("sudo tar -xzf /tmp/{} -C /data/web_static/releases/{}/".format(path1, path2))
+        run("sudo tar -xzf /tmp/{} -C /data/web_static/releases/{}/"
+            .format(path1, path2))
         run("sudo rm /tmp/{}".format(path1))
-        run("sudo mv /data/web_static/releases/{}/web_static/* /data/web_static/releases/{}/".format(path2, path2))
-        run("sudo rm -rf /data/web_static/releases/{}/web_static".format(path2))
+        run("sudo mv /data/web_static/releases/{}/web_static/* \
+/data/web_static/releases/{}/".format(path2, path2))
+        run("sudo rm -rf /data/web_static/releases/{}/web_static"
+            .format(path2))
         run("sudo rm -rf /data/web_satic/current")
-        run("sudo ln -s /data/web_static/releases/{}/ /data/web_static/current".format(path2))
+        run("sudo ln -s /data/web_static/releases/{}/ \
+/data/web_static/current".format(path2))
         return True
     else:
         print("Fallooo :c")
