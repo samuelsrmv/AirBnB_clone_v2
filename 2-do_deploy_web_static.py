@@ -42,7 +42,7 @@ def do_deploy(archive_path):
         run("sudo rm -rf /data/web_satic/current")
         run("sudo ln -s /data/web_static/releases/{}/ \
 /data/web_static/current".format(path2))
+        print("New version deployed!")
         return True
     else:
-        print("Fallooo :c")
         return False
