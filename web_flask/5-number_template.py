@@ -7,28 +7,28 @@ from flask import render_template
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 
-@app.route("/")
 
+@app.route("/")
 def function():
     """function"""
     return "¡Hola HBNB!"
 
-@app.route("/hbnb")
 
+@app.route("/hbnb")
 def function2():
     """function2"""
     return "HBNB"
 
-@app.route("/c/<text>")
 
+@app.route("/c/<text>")
 def function3(text):
     """function2"""
     text = text.replace("_", " ")
     return "C {}".format(text)
 
+
 @app.route("/python")
 @app.route("/python/<text>")
-
 def function4(text):
     """function2"""
     if text is None:
@@ -36,10 +36,12 @@ def function4(text):
     text = text.replace("_", " ")
     return "Python {}".format(text)
 
+
 @app.route("/number/<int:n>")
 def function_new(n):
     """function2"""
     return ("{} is a number".format(n))
+
 
 @app.route("/number_template/<int:n>")
 def function6(n):
