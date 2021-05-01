@@ -28,7 +28,7 @@ def function3(text):
 
 @app.route("/python")
 @app.route("/python/<text>")
-def function4(text):
+def function4(text=None):
     """function2"""
     if text is None:
         return "Python is cool"
