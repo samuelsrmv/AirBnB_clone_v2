@@ -44,8 +44,8 @@ def function_new(n):
 
 
 @app.route("/number_template/<int:n>")
-def function6(n):
-    """function6"""
+def function5(n):
+    """function5"""
     return render_template("5-number.html", n=n)
 
 
